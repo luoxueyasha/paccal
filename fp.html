@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- By roseyasa 20220429
+    本意是解决某些比较麻烦的经管课的计算问题，毕竟每次都要敲n次方，按计算器太麻烦了。
+    不提供自动判别之类的方法。ui懒得改。基本上算出来的就是个数。
+    本质上就是个静态网页，套个壳就能上安卓。
+-->
+<html lang="zh">
+  <head>
+    <meta charset=utf-8 />
+    <link href = "./style.css" rel="stylesheet" type="text/css" />
+    <script src = "./script.js"></script>
+    <title>整付终值之类的计算器</title>
+  </head>
+  <body>
+    <div>
+      结果保留三位小数，四舍五入。<br/>
+      <select id="mySelect" onchange="selfunc()">
+        <option value="fp" selected="selected">(F/P)整付终值</option>
+        <option value="pf">(P/F)整付现值</option>
+        <option value="fa">(F/A)等额分付终值</option>
+        <option value="af">(A/F)等额分付偿债基金</option>
+        <option value="pa">(P/A)等额分付现值</option>
+        <option value="ap">(A/P)等额分付资本回收</option>
+        <option value="pg">G*(P/G)等差序列现值</option>
+        <option value="pa1">A1*(P/A1)等比序列现值</option>
+      </select>
+      <div id = "formula">F=P(1+i)^n </div>
+      <div class="inputbox">
+        <span class="exptxt" id="waitCal">P:</span><input type="number" id="in_P" value="0"></input><br />
+        <span class="exptxt">i(%):</span><input type="number" id="in_i" value="0"></input><br />
+        <span id="inH" hidden="hidden"> <span class="exptxt">h(%):</span><input type="number" id="in_h" value="0"></input></span><br />
+        <span class="exptxt">n:</span><input type="number" id="in_n" value="1"></input>
+      </div><br />
+      <button onclick="getCal()">
+        计算
+      </button><br /><br />
+      <div class="result">
+        <span id="waitRes">F=</span><span id="result" class="result"></span>
+      </div><br />
+    </div>
+  </body>
+</html>
